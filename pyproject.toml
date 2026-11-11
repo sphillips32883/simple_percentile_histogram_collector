@@ -1,6 +1,6 @@
 [project]
 name = "simple-percentile-histogram-collector"
-version = "0.1.1"
+version = "0.1.2"
 description = "Streaming latency histogram that estimates p50, p95 and p99 via fixed buckets and centroid merging."
 requires-python = ">=3.10"
 dependencies = []
