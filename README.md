@@ -31,3 +31,10 @@ The trade-off: percentiles are approximate. For uniformly distributed latency da
 ## The awkward edge
 
 `min` and `max` return the mean of the leftmost and rightmost centroid, not the true extreme sample values. When a single outlier lands far from all other samples it becomes its own centroid and the value is preserved, but when outliers cluster near a boundary they may merge and the reported min/max drifts slightly. Use a dedicated extremes tracker if you need exact extrema.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
